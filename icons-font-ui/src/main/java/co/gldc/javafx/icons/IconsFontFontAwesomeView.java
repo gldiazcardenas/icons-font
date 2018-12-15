@@ -16,7 +16,7 @@ public class IconsFontFontAwesomeView extends HBox {
             fontIcon.setIcon(icon);
             fontIcon.setSize("32px");
             fontIcon.setOnMouseEntered(e  -> fontIcon.setGlyphStyle("-fx-fill: red;"));
-            fontIcon.setOnMouseExited(e -> fontIcon.setGlyphStyle(null));
+            fontIcon.setOnMouseExited(e -> fontIcon.setGlyphStyle("-fx-fill: black;"));
             getChildren().add(fontIcon);
         }
     }
