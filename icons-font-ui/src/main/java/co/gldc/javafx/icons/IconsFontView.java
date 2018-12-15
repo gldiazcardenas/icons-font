@@ -18,27 +18,33 @@ public class IconsFontView extends StackPane {
         close.getStyleClass().add("close");
         StackPane.setAlignment(close, Pos.TOP_RIGHT);
 
-        Button button = new Button();
-        button.setText("Login");
-        button.setOnAction(evt -> {
-            HBox box = new HBox();
-            box.setSpacing(10);
-            box.setAlignment(Pos.CENTER);
+        HBox buttons = new HBox();
 
-            for (IconsFontIkonli icon : IconsFontIkonli.values()) {
-                FontIcon fontIcon = FontIcon.of(icon, 32);
-                fontIcon.setOnMouseEntered(e -> fontIcon.setIconColor(Color.BLUE));
-                fontIcon.setOnMouseExited(e -> fontIcon.setIconColor(Color.BLACK));
-                box.getChildren().add(fontIcon);
-            }
-
-            StackPane.setAlignment(box, Pos.CENTER);
-            getChildren().remove(button);
-            getChildren().add(0, box);
+        Button buttonIkonli = new Button();
+        buttonIkonli.setText("Show Ikonli icons");
+        buttonIkonli.setOnAction(evt -> {
+            IconsFontIkonliView iconView = new IconsFontIkonliView();
+            StackPane.setAlignment(iconView, Pos.CENTER);
+            getChildren().remove(buttons);
+            getChildren().add(0, iconView);
         });
 
+        Button buttonFontAwesome = new Button();
+        buttonFontAwesome.setText("Show Awesome Icons");
+        buttonFontAwesome.setOnAction(evt -> {
+            IconsFontFontAwesomeView iconView = new IconsFontFontAwesomeView();
+            StackPane.setAlignment(iconView, Pos.CENTER);
+            getChildren().remove(buttons);
+            getChildren().add(0, iconView);
+        });
+
+        buttons.setSpacing(10);
+        buttons.setAlignment(Pos.CENTER);
+        buttons.getChildren().add(buttonIkonli);
+        buttons.getChildren().add(buttonFontAwesome);
+
         getChildren().add(close);
-        getChildren().add(button);
+        getChildren().add(buttons);
     }
 
 }
