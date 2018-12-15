@@ -17,7 +17,7 @@ public class IconsFontIkonliHandler extends AbstractIkonHandler {
 
     @Override
     public String getFontResourcePath() {
-        return "co/gldc/javafx/icons/ikonli/font/gabriel.ttf";
+        return "co/gldc/javafx/icons/ikonli/gabriel.ttf";
     }
 
     @Override
