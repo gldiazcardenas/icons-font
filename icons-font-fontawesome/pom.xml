@@ -14,4 +14,12 @@
         <relativePath>..</relativePath>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx</artifactId>
+            <version>8.2</version>
+        </dependency>
+    </dependencies>
+
  </project>
