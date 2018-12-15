@@ -4,38 +4,42 @@ import co.gldc.javafx.icons.ikonli.IconsFontIkonli;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-public class IconsFontView extends StackPane {
+public class IconsFontView extends BorderPane {
 
     public IconsFontView() {
         Label close = new Label();
         close.setGraphic(FontIcon.of(IconsFontIkonli.CLOSE));
         close.setOnMouseClicked(evt -> System.exit(0));
         close.getStyleClass().add("close");
-        StackPane.setAlignment(close, Pos.TOP_RIGHT);
 
         HBox buttons = new HBox();
+
+        Label back = new Label("Back");
+        back.setAlignment(Pos.CENTER);
+        back.getStyleClass().add("back");
+        back.setOnMouseClicked(evt -> {
+            setCenter(buttons);
+            back.setVisible(false);
+        });
+        back.setMaxHeight(Double.MAX_VALUE);
+        back.setVisible(false);
 
         Button buttonIkonli = new Button();
         buttonIkonli.setText("Show Ikonli icons");
         buttonIkonli.setOnAction(evt -> {
-            IconsFontIkonliView iconView = new IconsFontIkonliView();
-            StackPane.setAlignment(iconView, Pos.CENTER);
-            getChildren().remove(buttons);
-            getChildren().add(0, iconView);
+            setCenter(new IconsFontIkonliView());
+            back.setVisible(true);
         });
 
         Button buttonFontAwesome = new Button();
         buttonFontAwesome.setText("Show Awesome Icons");
         buttonFontAwesome.setOnAction(evt -> {
-            IconsFontFontAwesomeView iconView = new IconsFontFontAwesomeView();
-            StackPane.setAlignment(iconView, Pos.CENTER);
-            getChildren().remove(buttons);
-            getChildren().add(0, iconView);
+            setCenter(new IconsFontFontAwesomeView());
+            back.setVisible(true);
         });
 
         buttons.setSpacing(10);
@@ -43,8 +47,15 @@ public class IconsFontView extends StackPane {
         buttons.getChildren().add(buttonIkonli);
         buttons.getChildren().add(buttonFontAwesome);
 
-        getChildren().add(close);
-        getChildren().add(buttons);
+        HBox navigation = new HBox();
+        navigation.setAlignment(Pos.TOP_RIGHT);
+        navigation.getChildren().add(back);
+        navigation.getChildren().add(close);
+        navigation.setFillHeight(false);
+        navigation.setSpacing(10);
+
+        setCenter(buttons);
+        setTop(navigation);
     }
 
 }

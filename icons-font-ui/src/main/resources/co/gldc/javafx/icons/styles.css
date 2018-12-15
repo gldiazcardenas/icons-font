@@ -2,3 +2,8 @@
     -fx-padding: 10px;
     -fx-cursor: hand;
 }
+
+.back {
+    -fx-cursor: hand;
+    -fx-padding: 10px 0px;
+}
