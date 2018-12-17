@@ -1,2 +1,2 @@
 # icons-font
-Sample project with some font icons pack for javafx using Ikonli and FontAwesome
+Sample project that shows how to configure a icons font pack for javafx using Ikonli and FontAwesome
